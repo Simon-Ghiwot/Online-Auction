@@ -22,9 +22,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
-                        
+                        @if (Context.User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Lot" asp-action="Index">My Lots</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Purchase" asp-action="Index">History</a>
+                            </li>
+                        }
                     </ul>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
@@ -44,7 +52,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="background-color: #001a00">
         <div class="container">
             &copy; 2022 - Auction - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

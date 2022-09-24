@@ -1,4 +1,5 @@
 using Auction.Models;
+using Auction.Models.Hubs;
 using Auction.Models.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -50,8 +51,11 @@ namespace Auction
                 GoogleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
                 GoogleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
             });
+            services.AddSignalR();
             services.AddScoped<ILotService, LotService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPurchaseService, PurchaseService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +73,7 @@ namespace Auction
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
             app.UseCookiePolicy();
             app.UseAuthentication();
@@ -77,9 +81,11 @@ namespace Auction
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<BidHub>("/BestBid");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                
             });
         }
     }

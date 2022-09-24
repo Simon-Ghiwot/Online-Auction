@@ -12,9 +12,15 @@ namespace Auction.Models.Services
         {
             
         }
-        public async Task<IEnumerable<Lot>> GetAllActiveAsync()
+        public async Task<IEnumerable<Lot>> GetAllActiveAsync(string search)
         {
-            return await _context.Lots.Where(temp => temp.AvailabilityStatus == 0).ToListAsync();
+            return await _context.Lots.Where(temp => temp.AvailabilityStatus == 0 && temp.Name.Contains(search)).ToListAsync();
+        }
+        public async Task<IEnumerable<Lot>> GetMyLotsAsync(int? id)
+        {
+            return await _context.Lots.Where(temp=>temp.UserId == id)
+                                      .Include(category => category.Category)
+                                      .ToListAsync();
         }
     }
 }

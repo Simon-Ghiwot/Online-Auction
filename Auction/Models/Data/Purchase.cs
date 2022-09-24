@@ -2,7 +2,7 @@
 
 namespace Auction.Models
 {
-    public class PurchaseModel
+    public class Purchase
     {
         [Key]
         public int Id { get; set; }
