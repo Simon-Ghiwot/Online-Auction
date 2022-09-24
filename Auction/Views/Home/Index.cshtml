@@ -6,9 +6,9 @@
     <input class="form-control"  type="text" placeholder="Search" name="search" value="@ViewBag.search">
     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 </form>
-<div class="d-flex flex-row bd-highlight">
+<div class="d-flex flex-row bd-highlight flex-wrap" style="gap: 20px">
     @foreach(var lot in Model){
-        <a href = "Lot/Detail/@lot.Id" class="text-center"  >
+        <a href = "Lot/Detail/@lot.Id" class="text-center nav-link "  >
             <image src="@lot.PictureUrl" class="img-thumbnail " style="width: 300px; height: 300px"/>
             <p>Name : @lot.Name</p>
             <p>Price : @lot.Price</p>

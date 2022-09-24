@@ -18,7 +18,7 @@ namespace Auction.Models.Base
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(long? id)
+        public async Task DeleteAsync(int? id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
             EntityEntry itemToBeDeleted = _context.Entry<T>(entity);
@@ -31,12 +31,12 @@ namespace Auction.Models.Base
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(long? id)
+        public async Task<T> GetByIdAsync(int? id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(T entity, long id)
+        public async Task UpdateAsync(T entity)
         {
             EntityEntry itemToBeUpdated = _context.Entry<T>(entity);
             itemToBeUpdated.State = EntityState.Modified;

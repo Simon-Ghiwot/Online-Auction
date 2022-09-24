@@ -16,24 +16,46 @@ namespace Auction.Controllers
         IWebHostEnvironment _webHostEnviroment;
         ILotService _service;
         IUserService _userService;
-        public LotController(IWebHostEnvironment webHostEnviroment, ILotService service, IUserService userService) 
+        ICategoryService _categoryService;
+        private readonly string CLAIM_TYPE = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+        public LotController(ICategoryService categoryService, IWebHostEnvironment webHostEnviroment, ILotService service, IUserService userService) 
         {
             _webHostEnviroment = webHostEnviroment;
             _service = service;
             _userService = userService;
+            _categoryService = categoryService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == CLAIM_TYPE).Value;
+            var id = _userService.GetUserId(email);
+            var lots = await _service.GetMyLotsAsync(id);
+            return View(lots);
+        }
+        public async Task<IActionResult> DetailOfMyLot(int? id)
+        {
+            var lot = await _service.GetByIdAsync(id);
+            return View(lot);
+        }
+        public async Task<IActionResult> Detail(int? id)
+        {
+            var lot = await _service.GetByIdAsync(id);
+            var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == CLAIM_TYPE).Value;
+            var userId = _userService.GetUserId(email);
+            ViewBag.show = 1;
+            if (userId == lot.UserId)
+                ViewBag.show = 0;
+            return View(lot);
         }
         public async Task<IActionResult> Create()
         {
+            ViewBag.categories = await _categoryService.GetAllAsync();
             return await Task.FromResult(View());
         }
         [HttpPost]
         public async Task<IActionResult> Create(Lot lot)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == CLAIM_TYPE).Value;
             if (lot.Picture != null)
             {
                 string folder = "Images/" + Guid.NewGuid().ToString() + lot.Picture.FileName;//defining the name of the file uniquely
@@ -45,7 +67,27 @@ namespace Auction.Controllers
             }
             lot.UserId = _userService.GetUserId(email);
             await _service.AddAsynnc(lot);
-            return RedirectToAction("Index", "Home");
+
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> update(int? id)
+        {
+            var lot = await _service.GetByIdAsync(id);
+            lot.AvailabilityStatus = 1;
+            await _service.UpdateAsync(lot);
+
+            return RedirectToAction("index");
+        }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var lot = await _service.GetByIdAsync(id);
+
+            var pathofImageToDelete = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\", lot.PictureUrl)
+                                          .Replace('/', '\\');
+
+            await _service.DeleteAsync(id);
+            //System.IO.File.Delete(pathofImageToDelete);
+            return RedirectToAction("index");
         }
     }
 }

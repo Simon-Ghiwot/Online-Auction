@@ -23,9 +23,10 @@ namespace Auction.Controllers
             _service = service;
         }
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search="")
         {
-            var lots = await _service.GetAllActiveAsync();
+            ViewBag.search = search;
+            var lots = await _service.GetAllActiveAsync(search);
             return View(lots);
         }
 
@@ -33,7 +34,11 @@ namespace Auction.Controllers
         {
             return View();
         }
-
+        [AllowAnonymous]
+        public IActionResult About()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
