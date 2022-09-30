@@ -1,0 +1,31 @@
+﻿body{
+   background-color:lightgray;
+}
+
+
+.lo {
+    font-size: 200px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 20px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 0;
+    background: url(../Images/auc9.jpg) 50% 50%;
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+    .lo h2 {
+        font-size: 100px;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 10px;
+        padding-top: 40px;
+    }
+  .table{
+      border:1px solid ;
+  }

@@ -8384,19 +8384,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aki\\.nuget\\packages\\": {}
+    "C:\\Users\\sidona\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aki\\Pictures\\Simon School\\web II\\Term_Project\\Auction\\Auction\\Auction.csproj",
+      "projectUniqueName": "C:\\Users\\sidona\\Online-Auction\\Auction\\Auction.csproj",
       "projectName": "Auction",
-      "projectPath": "C:\\Users\\Aki\\Pictures\\Simon School\\web II\\Term_Project\\Auction\\Auction\\Auction.csproj",
-      "packagesPath": "C:\\Users\\Aki\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aki\\Pictures\\Simon School\\web II\\Term_Project\\Auction\\Auction\\obj\\",
+      "projectPath": "C:\\Users\\sidona\\Online-Auction\\Auction\\Auction.csproj",
+      "packagesPath": "C:\\Users\\sidona\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sidona\\Online-Auction\\Auction\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Aki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sidona\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8485,7 +8485,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.410\\RuntimeIdentifierGraph.json"
       }
     }
   }
