@@ -96,6 +96,9 @@ namespace Auction.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -119,7 +122,7 @@ namespace Auction.Migrations
                     b.ToTable("Lots");
                 });
 
-            modelBuilder.Entity("Auction.Models.PurchaseModel", b =>
+            modelBuilder.Entity("Auction.Models.Purchase", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,10 +157,10 @@ namespace Auction.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("role")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -203,7 +206,7 @@ namespace Auction.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Auction.Models.PurchaseModel", b =>
+            modelBuilder.Entity("Auction.Models.Purchase", b =>
                 {
                     b.HasOne("Auction.Models.Lot", "Lot")
                         .WithMany()
