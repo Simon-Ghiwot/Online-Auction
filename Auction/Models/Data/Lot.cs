@@ -26,6 +26,8 @@ namespace Auction.Models
         [Required]
         public int CategoryId { get; set; }
 
+        public string Description { get; set; }
+
         public virtual User User { get; set; }
         public virtual Category Category { get; set; }
 
