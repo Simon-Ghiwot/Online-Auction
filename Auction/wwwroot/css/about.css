@@ -1,8 +1,14 @@
-﻿body{
+﻿
+
+
+body{
 
     font-family:"Montserrat",sans-serif;
     background-color:lightgray;
+
+    
 }
+
 
 .abo  {
     font-size: 200px;
@@ -32,10 +38,15 @@ margin:0;
     }
 .paragraph {
     padding-left: 30%;
-    padding-top: 150px;
+    padding-top:200px;
+ 
+    padding-bottom:400px;
+    
+   
 }
     .paragraph p{
         font-weight:bold;
+        font-size:20px;
     }
     /*   padding-left:30%;
     padding-top:150px;
@@ -47,6 +58,8 @@ margin:0;
         width: 100%;
         background-color: #053742;
         color: white;
+        margin-top:auto;
+    
     }
 
 .containerr {
@@ -145,6 +158,7 @@ margin:0;
 .center .contentt .phone {
     margin: 15px 0;
 }
+/*
 
 .right form .text {
     font-size: 1.0625rem;
@@ -183,7 +197,7 @@ margin:0;
         .right form .btn button:hover {
             background: #000;
         }
-
+    */
 .footer-bottom center {
     padding: 5px;
     font-size: 0.9375rem;

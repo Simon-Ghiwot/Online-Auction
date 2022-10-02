@@ -9,7 +9,7 @@
     font-weight: 900;
     letter-spacing: 20px;
     position: absolute;
-    top: 15%;
+    top: 120px;
     left: 50%;
     transform: translate(-50%,-50%);
     margin: 0;
@@ -28,7 +28,12 @@
     }
   .table{
       border:1px solid ;
+      padding-bottom:400px;
   }
+ 
+.lastt {
+    padding-bottom: 400px;
+}
 
 
 
@@ -138,6 +143,7 @@ footer {
 .center .contentt .phone {
     margin: 15px 0;
 }
+/*
 
 .right form .text {
     font-size: 1.0625rem;
@@ -176,7 +182,7 @@ footer {
         .right form .btn button:hover {
             background: #000;
         }
-
+    */
 .footer-bottom center {
     padding: 5px;
     font-size: 0.9375rem;
