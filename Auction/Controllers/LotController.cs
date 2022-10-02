@@ -40,13 +40,15 @@ namespace Auction.Controllers
         public async Task<IActionResult> Detail(int? id)
         {
             var lot = await _service.GetByIdAsync(id);
+            
             var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == CLAIM_TYPE).Value;
             var userId = _userService.GetUserId(email);
             ViewBag.show = 1;
-            if (userId == lot.UserId)
+            if (lot!=null&&userId == lot.UserId)
                 ViewBag.show = 0;
             return View(lot);
         }
+        
         public async Task<IActionResult> Create()
         {
             ViewBag.categories = await _categoryService.GetAllAsync();

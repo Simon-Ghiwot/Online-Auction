@@ -9,6 +9,7 @@ namespace Auction.Models.Services
         {
 
         }
+
         public int GetUserId(string email)
         {
             var user = _context.Users.FirstOrDefault(temp => temp.Email == email);

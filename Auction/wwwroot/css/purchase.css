@@ -2,7 +2,9 @@
     background-color:lightgray;
 }
 
-
+.table{
+    padding-bottom:400px;
+}
 
 
 
@@ -111,7 +113,7 @@ footer {
 .center .contentt .phone {
     margin: 15px 0;
 }
-
+/*
 .right form .text {
     font-size: 1.0625rem;
     margin-bottom: 2px;
@@ -149,6 +151,7 @@ footer {
         .right form .btn button:hover {
             background: #000;
         }
+    */
 
 .footer-bottom center {
     padding: 5px;
